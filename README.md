@@ -1,2 +1,2 @@
-# flas_learning_path
+# flask_learning_path
 Learning Flask
