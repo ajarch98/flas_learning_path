@@ -1,12 +1,9 @@
-from flask import Flask, render_template, flash, redirect, url_for
-from config import Config
-from forms import LoginForm
+from flask import render_template, flash, url_for, redirect
+from app import App
+from app.forms import LoginForm
 
-app = Flask(__name__)
-app.config.from_object(Config)
-
-@app.route('/')
-@app.route('/index')
+@App.route('/')
+@App.route('/index')
 def index():
     user = {'username':'Advait'}
     posts = [
@@ -21,7 +18,7 @@ def index():
     ]
     return render_template("index.html", title = "Hello to Microblog", user = user, posts = posts)
 
-@app.route('/login', methods = ['GET', 'POST'])
+@App.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
